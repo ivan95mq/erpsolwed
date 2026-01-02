@@ -1,0 +1,65 @@
+---
+import ShimmerButton from './magicui/ShimmerButton.tsx';
+import Meteors from './magicui/Meteors.tsx';
+---
+
+<section class="py-24 relative overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-base-100 via-secondary/5 to-base-100"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-secondary/10 via-transparent to-transparent"></div>
+
+  <!-- Meteors -->
+  <div class="absolute inset-0 overflow-hidden">
+    <Meteors number={10} client:load />
+  </div>
+
+  <div class="relative z-10 max-w-container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-base-300/50 backdrop-blur-sm border border-secondary/20 rounded-pill px-4 py-2 mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="font-body text-sm text-gray-custom">Activa tu cuenta en menos de 2 minutos</span>
+      </div>
+
+      <!-- Headline -->
+      <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6">
+        Empieza hoy. <span class="text-secondary">1 mes gratis.</span>
+      </h2>
+
+      <!-- Subheadline -->
+      <p class="font-body text-lg text-gray-custom mb-10 max-w-xl mx-auto">
+        Sin tarjeta de crédito. Sin compromisos. Cancela cuando quieras.
+        Únete a más de 30 empresas que ya confían en nosotros.
+      </p>
+
+      <!-- CTA Button -->
+      <ShimmerButton href="#pricing" size="lg" client:load>
+        Empezar prueba gratis
+      </ShimmerButton>
+
+      <!-- Trust badges -->
+      <div class="flex flex-wrap justify-center items-center gap-8 mt-12 opacity-60">
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          <span class="font-body text-sm">SSL Seguro</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+          </svg>
+          <span class="font-body text-sm">Pago seguro con Stripe</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="font-body text-sm">RGPD Compliant</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

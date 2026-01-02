@@ -1,0 +1,321 @@
+---
+// Lista de clientes ERP existentes
+const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza","manuela","mueblesg3","ospe","roesan","wehost"];
+---
+
+<nav class="navbar bg-base-100/80 backdrop-blur-md fixed top-0 z-50 border-b border-base-300">
+  <div class="max-w-container mx-auto w-full px-4">
+    <div class="flex-1">
+      <a href="/" class="flex items-center gap-2">
+        <span class="font-heading text-2xl font-bold text-secondary">ERP</span>
+        <span class="font-heading text-2xl font-bold text-white">SOLWED</span>
+      </a>
+    </div>
+    <div class="flex-none hidden md:block">
+      <ul class="menu menu-horizontal px-1 gap-2">
+        <li><a href="#features" class="font-body hover:text-secondary transition-colors">Características</a></li>
+        <li><a href="#pricing" class="font-body hover:text-secondary transition-colors">Precios</a></li>
+        <li><a href="#faq" class="font-body hover:text-secondary transition-colors">FAQ</a></li>
+      </ul>
+    </div>
+    <!-- Buscador de clientes - DESTACADO -->
+    <div class="flex-none hidden md:block ml-6">
+      <div id="client-search-container" class="relative">
+        <div class="flex items-center gap-2 bg-gradient-to-r from-secondary/20 to-primary/20 border-2 border-secondary/50 rounded-pill px-4 py-2 hover:border-secondary transition-all duration-300 group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            id="client-search"
+            placeholder="¿Ya eres cliente? Accede aquí"
+            autocomplete="off"
+            class="bg-transparent border-none outline-none w-52 font-body text-sm text-white placeholder:text-gray-custom/70 focus:placeholder:text-gray-custom/40"
+          />
+          <kbd class="hidden group-hover:inline-flex kbd kbd-sm bg-base-300/50 text-xs text-gray-custom">Enter</kbd>
+        </div>
+        <!-- Dropdown de autocompletado -->
+        <div id="client-dropdown" class="absolute top-full left-0 right-0 mt-2 bg-base-200 border border-base-300 rounded-xl shadow-2xl overflow-hidden z-50 hidden">
+          <div class="p-2 text-xs text-gray-custom/70 font-body border-b border-base-300">
+            Clientes activos
+          </div>
+          <ul id="client-list" class="max-h-64 overflow-y-auto">
+            {erpClients.map((client) => (
+              <li>
+                <button
+                  type="button"
+                  class="client-option w-full px-4 py-3 text-left font-body hover:bg-secondary/20 transition-colors flex items-center gap-3"
+                  data-id={client}
+                >
+                  <span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-heading text-sm">
+                    {client.charAt(0).toUpperCase()}
+                  </span>
+                  <div>
+                    <div class="text-white">{client}</div>
+                    <div class="text-xs text-gray-custom/60">{client}.erpsolwed.es</div>
+                  </div>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <!-- No encontrado -->
+          <div id="not-found-msg" class="hidden p-4 border-t border-base-300 text-center">
+            <p class="text-gray-custom/70 text-sm mb-3">
+              "<span id="search-term"></span>" no está en nuestra lista
+            </p>
+            <div class="flex gap-2">
+              <button id="try-anyway" class="btn btn-outline btn-sm rounded-pill flex-1">
+                Probar igualmente
+              </button>
+              <a href="#pricing" class="btn btn-secondary btn-sm rounded-pill flex-1">
+                Contratar ERP
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-none ml-4">
+      <a href="#pricing" class="btn btn-primary btn-sm rounded-pill font-heading uppercase tracking-wider">
+        Prueba gratis
+      </a>
+    </div>
+    <!-- Mobile menu -->
+    <div class="flex-none md:hidden">
+      <label for="mobile-menu" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+      </label>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<input type="checkbox" id="mobile-menu" class="hidden peer" />
+<div class="fixed inset-0 z-40 hidden peer-checked:block md:hidden">
+  <label for="mobile-menu" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></label>
+  <div class="absolute right-0 top-0 h-full w-72 bg-base-200 p-6">
+    <!-- Buscador móvil mejorado -->
+    <div class="mb-6">
+      <div class="text-xs text-gray-custom/70 font-body mb-2">¿Ya eres cliente?</div>
+      <div id="client-search-container-mobile" class="relative">
+        <div class="flex items-center gap-2 bg-gradient-to-r from-secondary/20 to-primary/20 border-2 border-secondary/50 rounded-xl px-4 py-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            id="client-search-mobile"
+            placeholder="Buscar mi empresa..."
+            autocomplete="off"
+            class="bg-transparent border-none outline-none w-full font-body text-sm text-white placeholder:text-gray-custom/70"
+          />
+        </div>
+        <!-- Dropdown móvil -->
+        <div id="client-dropdown-mobile" class="absolute top-full left-0 right-0 mt-2 bg-base-300 border border-base-300 rounded-xl shadow-2xl overflow-hidden z-50 hidden">
+          <ul id="client-list-mobile" class="max-h-48 overflow-y-auto">
+            {erpClients.map((client) => (
+              <li>
+                <button
+                  type="button"
+                  class="client-option-mobile w-full px-4 py-3 text-left font-body hover:bg-secondary/20 transition-colors flex items-center gap-3"
+                  data-id={client}
+                  
+                >
+                  <span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-heading text-sm">
+                    {client.charAt(0).toUpperCase()}
+                  </span>
+                  <div>
+                    <div class="text-white text-sm">{client}</div>
+                    <div class="text-xs text-gray-custom/60">{client}.erpsolwed.es</div>
+                  </div>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <!-- No encontrado móvil -->
+          <div id="not-found-msg-mobile" class="hidden p-4 border-t border-base-300 text-center">
+            <p class="text-gray-custom/70 text-sm mb-3">
+              "<span id="search-term-mobile"></span>" no está en nuestra lista
+            </p>
+            <div class="flex flex-col gap-2">
+              <button id="try-anyway-mobile" class="btn btn-outline btn-sm rounded-pill w-full">
+                Probar igualmente
+              </button>
+              <a href="#pricing" class="btn btn-secondary btn-sm rounded-pill w-full">
+                Contratar ERP
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="menu gap-2">
+      <li><a href="#features" class="font-body text-lg">Características</a></li>
+      <li><a href="#pricing" class="font-body text-lg">Precios</a></li>
+      <li><a href="#faq" class="font-body text-lg">FAQ</a></li>
+      <li class="mt-4">
+        <a href="#pricing" class="btn btn-primary rounded-pill font-heading uppercase">
+          Prueba gratis
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script define:vars={{ erpClients }}>
+  // Función para ir al ERP
+  function goToERP(clientId) {
+    if (clientId.trim()) {
+      window.location.href = 'https://' + clientId + '.erpsolwed.es';
+    }
+  }
+
+  // Normalizar texto para búsqueda
+  function normalizeText(text) {
+    return text
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]/g, '');
+  }
+
+  // Desktop
+  const input = document.getElementById('client-search');
+  const dropdown = document.getElementById('client-dropdown');
+  const clientOptions = document.querySelectorAll('.client-option');
+
+  input?.addEventListener('focus', () => {
+    dropdown?.classList.remove('hidden');
+  });
+
+  const notFoundMsg = document.getElementById('not-found-msg');
+  const searchTermSpan = document.getElementById('search-term');
+  const tryAnywayBtn = document.getElementById('try-anyway');
+
+  input?.addEventListener('input', (e) => {
+    const query = normalizeText(e.target.value);
+    const rawQuery = e.target.value.trim();
+    let hasResults = false;
+
+    clientOptions.forEach((option) => {
+      const id = option.dataset.id || '';
+
+      if (id.includes(query)) {
+        option.parentElement.classList.remove('hidden');
+        hasResults = true;
+      } else {
+        option.parentElement.classList.add('hidden');
+      }
+    });
+
+    if (query && !hasResults) {
+      // Si no hay resultados, mostrar mensaje con opciones
+      dropdown?.classList.remove('hidden');
+      notFoundMsg?.classList.remove('hidden');
+      if (searchTermSpan) searchTermSpan.textContent = rawQuery;
+    } else {
+      notFoundMsg?.classList.add('hidden');
+    }
+  });
+
+  tryAnywayBtn?.addEventListener('click', () => {
+    const value = input?.value.trim();
+    if (value) {
+      goToERP(normalizeText(value));
+    }
+  });
+
+  input?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const value = input.value.trim();
+      if (value) {
+        goToERP(normalizeText(value));
+      }
+    }
+  });
+
+  clientOptions.forEach((option) => {
+    option.addEventListener('click', () => {
+      goToERP(option.dataset.id || '');
+    });
+  });
+
+  // Cerrar dropdown al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    const container = document.getElementById('client-search-container');
+    if (container && !container.contains(e.target)) {
+      dropdown?.classList.add('hidden');
+    }
+  });
+
+  // Mobile
+  const inputMobile = document.getElementById('client-search-mobile');
+  const dropdownMobile = document.getElementById('client-dropdown-mobile');
+  const clientOptionsMobile = document.querySelectorAll('.client-option-mobile');
+  const notFoundMsgMobile = document.getElementById('not-found-msg-mobile');
+  const searchTermMobile = document.getElementById('search-term-mobile');
+  const tryAnywayMobile = document.getElementById('try-anyway-mobile');
+
+  inputMobile?.addEventListener('focus', () => {
+    dropdownMobile?.classList.remove('hidden');
+  });
+
+  inputMobile?.addEventListener('input', (e) => {
+    const query = normalizeText(e.target.value);
+    const rawQuery = e.target.value.trim();
+    let hasResultsMobile = false;
+
+    clientOptionsMobile.forEach((option) => {
+      const id = option.dataset.id || '';
+
+      if (id.includes(query)) {
+        option.parentElement.classList.remove('hidden');
+        hasResultsMobile = true;
+      } else {
+        option.parentElement.classList.add('hidden');
+      }
+    });
+
+    if (query && !hasResultsMobile) {
+      dropdownMobile?.classList.remove('hidden');
+      notFoundMsgMobile?.classList.remove('hidden');
+      if (searchTermMobile) searchTermMobile.textContent = rawQuery;
+    } else {
+      notFoundMsgMobile?.classList.add('hidden');
+    }
+  });
+
+  tryAnywayMobile?.addEventListener('click', () => {
+    const value = inputMobile?.value.trim();
+    if (value) {
+      goToERP(normalizeText(value));
+    }
+  });
+
+  inputMobile?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const value = inputMobile.value.trim();
+      if (value) {
+        goToERP(normalizeText(value));
+      }
+    }
+  });
+
+  clientOptionsMobile.forEach((option) => {
+    option.addEventListener('click', () => {
+      goToERP(option.dataset.id || '');
+    });
+  });
+
+  // Cerrar dropdown móvil al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    const containerMobile = document.getElementById('client-search-container-mobile');
+    if (containerMobile && !containerMobile.contains(e.target)) {
+      dropdownMobile?.classList.add('hidden');
+    }
+  });
+</script>

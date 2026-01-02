@@ -1,0 +1,75 @@
+---
+const faqs = [
+  {
+    question: "¿Qué es Verifactu y por qué lo necesito?",
+    answer: "Verifactu es el nuevo sistema de la Agencia Tributaria que obliga a las empresas a enviar los datos de sus facturas en tiempo real. A partir de 2026 será obligatorio para la mayoría de empresas españolas. Nuestro ERP está 100% preparado para cumplir con esta normativa."
+  },
+  {
+    question: "¿Puedo probar el ERP antes de pagar?",
+    answer: "¡Sí! Ofrecemos 1 mes de prueba gratis en todos los planes. No necesitas tarjeta de crédito para empezar. Si no te convence, simplemente no continúas y no te cobramos nada."
+  },
+  {
+    question: "¿Puedo cambiar de plan en cualquier momento?",
+    answer: "Sí, puedes subir o bajar de plan cuando quieras desde tu portal de cliente. Los cambios se aplican de forma prorrateada, por lo que solo pagas por lo que usas."
+  },
+  {
+    question: "¿Mis datos están seguros?",
+    answer: "Absolutamente. Utilizamos servidores en Europa con cifrado SSL, backups diarios automáticos y cumplimos con el RGPD. Tus datos son tuyos y puedes exportarlos cuando quieras."
+  },
+  {
+    question: "¿Qué soporte técnico incluye?",
+    answer: "Todos los planes incluyen soporte por email y tickets. Respondemos en menos de 24 horas laborables. El plan Profesional incluye soporte prioritario con tiempos de respuesta más rápidos."
+  },
+  {
+    question: "¿Puedo migrar mis datos desde otro programa?",
+    answer: "Sí, ofrecemos migración gratuita desde la mayoría de programas de facturación del mercado. Nuestro equipo te ayudará a importar tus clientes, productos y facturas históricas."
+  },
+  {
+    question: "¿Hay permanencia o compromiso mínimo?",
+    answer: "No, sin permanencia ni compromisos. Puedes cancelar tu suscripción cuando quieras. Si cancelas, tendrás acceso hasta el final del período facturado."
+  },
+];
+---
+
+<section id="faq" class="py-24 relative overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-base-100 via-base-200/30 to-base-100"></div>
+
+  <div class="relative z-10 max-w-container mx-auto px-4">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <span class="font-body text-secondary uppercase tracking-widest text-sm">FAQ</span>
+      <h2 class="font-heading text-3xl md:text-5xl font-bold mt-4 mb-6">
+        Preguntas <span class="text-secondary">frecuentes</span>
+      </h2>
+      <p class="font-body text-gray-custom max-w-2xl mx-auto">
+        ¿Tienes dudas? Aquí respondemos las preguntas más comunes sobre nuestro ERP.
+      </p>
+    </div>
+
+    <!-- FAQ accordion -->
+    <div class="max-w-3xl mx-auto space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="collapse collapse-arrow bg-base-200/50 backdrop-blur-sm border border-base-300 rounded-xl">
+          <input type="radio" name="faq-accordion" checked={index === 0} />
+          <div class="collapse-title font-heading text-lg font-semibold pr-12">
+            {faq.question}
+          </div>
+          <div class="collapse-content">
+            <p class="font-body text-gray-custom pt-2">
+              {faq.answer}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="text-center mt-12">
+      <p class="font-body text-gray-custom mb-4">¿No encuentras lo que buscas?</p>
+      <a href="mailto:info@solwed.es" class="btn btn-outline rounded-pill font-heading uppercase tracking-wider border-white/20 hover:bg-white/10 hover:border-white/40">
+        Contactar con soporte
+      </a>
+    </div>
+  </div>
+</section>

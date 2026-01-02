@@ -1,0 +1,223 @@
+---
+import BorderBeam from './magicui/BorderBeam.tsx';
+
+const plans = [
+  {
+    name: "Principiante",
+    description: "Para autónomos y pequeños negocios",
+    priceMonthly: "9,89",
+    priceYearly: "98,90",
+    urlMonthly: "https://buy.stripe.com/eVq28r3YQdt45aJ526co00N?prefilled_promo_code=SOLWED",
+    urlYearly: "https://buy.stripe.com/8x29ATgLCbkW6eN9imco00T?prefilled_promo_code=SOLWED",
+    resources: "Básicos",
+    popular: false,
+    features: [
+      { name: "Facturación electrónica", included: true },
+      { name: "Verifactu", included: true },
+      { name: "Presupuestos", included: true },
+      { name: "Inventario/Almacén", included: "Limitado" },
+      { name: "Contabilidad", included: "Limitado" },
+      { name: "Informes", included: "Limitados" },
+      
+      { name: "Recursos Humanos", included: false },
+      { name: "Edición de facturas", included: false },
+      { name: "Remesas", included: false },
+    ],
+  },
+  {
+    name: "Estándar",
+    description: "Para pymes en crecimiento",
+    priceMonthly: "19,89",
+    priceYearly: "198,90",
+    urlMonthly: "https://buy.stripe.com/28E9ATdzqfBc8mV3Y2co00O?prefilled_promo_code=SOLWED",
+    urlYearly: "https://buy.stripe.com/aFafZh9ja9cO46Fbquco00U?prefilled_promo_code=SOLWED",
+    resources: "Avanzados",
+    popular: true,
+    features: [
+      { name: "Todo del plan Principiante", included: true },
+      { name: "Inventario/Almacén completo", included: true },
+      { name: "Contabilidad completa", included: true },
+      { name: "Informes avanzados", included: true },
+      { name: "TPV", included: true },
+      { name: "Recursos Humanos", included: true },
+      { name: "Control de fichajes", included: true },
+      { name: "Edición de facturas", included: true },
+      { name: "Remesas", included: true },
+    ],
+  },
+  {
+    name: "Profesional",
+    description: "Para empresas que necesitan más",
+    priceMonthly: "49,89",
+    priceYearly: "498,90",
+    urlMonthly: "https://buy.stripe.com/14A7sL7b29cO46F526co00P?prefilled_promo_code=SOLWED",
+    urlYearly: "https://buy.stripe.com/dRmcN52UM4Wy7iR7aeco00V?prefilled_promo_code=SOLWED",
+    resources: "Dedicados",
+    popular: false,
+    features: [
+      { name: "Todo del plan Estándar", included: true },
+      { name: "Conciliación bancaria", included: true },
+      { name: "Firmas digitales", included: true },
+      { name: "Portal del cliente", included: true },
+      { name: "Multi-empresa", included: true },
+      { name: "API / Integraciones", included: true },
+    ],
+  },
+];
+---
+
+<section id="pricing" class="py-24 relative overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-base-100 via-base-200/30 to-base-100"></div>
+
+  <div class="relative z-10 max-w-container mx-auto px-4">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <span class="font-body text-secondary uppercase tracking-widest text-sm">Precios</span>
+      <h2 class="font-heading text-3xl md:text-5xl font-bold mt-4 mb-6">
+        Elige el plan <span class="text-secondary">perfecto para ti</span>
+      </h2>
+      <p class="font-body text-gray-custom max-w-2xl mx-auto mb-8">
+        Todos los planes incluyen 1 mes gratis. Sin compromiso, cancela cuando quieras.
+      </p>
+
+      <!-- Billing toggle -->
+      <div class="inline-flex items-center gap-4 bg-base-300/50 rounded-pill p-1">
+        <button id="btn-monthly" class="px-6 py-2 rounded-pill font-body text-sm transition-all bg-secondary text-black">
+          Mensual
+        </button>
+        <button id="btn-yearly" class="px-6 py-2 rounded-pill font-body text-sm transition-all text-gray-custom hover:text-white">
+          Anual <span id="yearly-badge" class="text-secondary text-xs">(2 meses gratis)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pricing cards -->
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {plans.map((plan) => (
+        <div class={`relative bg-base-200/50 backdrop-blur-sm border rounded-2xl p-8 flex flex-col ${plan.popular ? 'border-secondary' : 'border-base-300'}`}>
+          {plan.popular && (
+            <>
+              <BorderBeam size={200} duration={8} client:load />
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span class="bg-secondary text-black font-heading text-xs uppercase tracking-wider px-4 py-1 rounded-pill">
+                  Más popular
+                </span>
+              </div>
+            </>
+          )}
+
+          <div class="mb-6">
+            <span class="inline-block bg-base-300/50 text-secondary text-xs font-body px-3 py-1 rounded-pill mb-4">
+              Recursos {plan.resources}
+            </span>
+            <h3 class="font-heading text-2xl font-bold mb-2">{plan.name}</h3>
+            <p class="font-body text-gray-custom text-sm">{plan.description}</p>
+          </div>
+
+          <div class="mb-8">
+            <div class="flex items-baseline gap-1">
+              <span class="price-monthly font-heading text-4xl font-bold">{plan.priceMonthly}€</span>
+              <span class="price-yearly font-heading text-4xl font-bold hidden">{plan.priceYearly}€</span>
+              <span class="period-monthly font-body text-gray-custom">/mes</span>
+              <span class="period-yearly font-body text-gray-custom hidden">/año</span>
+            </div>
+            <p class="font-body text-xs text-gray-custom mt-1">+ IVA</p>
+          </div>
+
+          <ul class="space-y-3 mb-8 flex-grow">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                {feature.included === true ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : feature.included === false ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-custom/50 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-warning flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                )}
+                <span class={`font-body text-sm ${feature.included === false ? 'text-gray-custom/50' : 'text-gray-custom'}`}>
+                  {feature.name}
+                  {typeof feature.included === 'string' && (
+                    <span class="text-warning text-xs ml-1">({feature.included})</span>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={plan.urlMonthly}
+            data-url-monthly={plan.urlMonthly}
+            data-url-yearly={plan.urlYearly}
+            class={`btn w-full rounded-pill font-heading uppercase tracking-wider ${plan.popular ? 'btn-primary' : 'btn-outline border-white/20 hover:bg-white/10'}`}
+          >
+            Empezar prueba gratis
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Footer note -->
+    <p class="text-center font-body text-sm text-gray-custom mt-12">
+      Todos los planes incluyen: portal personalizado, backups diarios, soporte por email/tickets
+    </p>
+  </div>
+</section>
+
+<script>
+  const btnMonthly = document.getElementById('btn-monthly');
+  const btnYearly = document.getElementById('btn-yearly');
+  const yearlyBadge = document.getElementById('yearly-badge');
+  const priceMonthly = document.querySelectorAll('.price-monthly');
+  const priceYearly = document.querySelectorAll('.price-yearly');
+  const periodMonthly = document.querySelectorAll('.period-monthly');
+  const periodYearly = document.querySelectorAll('.period-yearly');
+  const ctaButtons = document.querySelectorAll('[data-url-monthly]');
+
+  function setMonthly() {
+    btnMonthly?.classList.add('bg-secondary', 'text-black');
+    btnMonthly?.classList.remove('text-gray-custom');
+    btnYearly?.classList.remove('bg-secondary', 'text-black');
+    btnYearly?.classList.add('text-gray-custom');
+    yearlyBadge?.classList.remove('text-black');
+    yearlyBadge?.classList.add('text-secondary');
+
+    priceMonthly.forEach(el => el.classList.remove('hidden'));
+    priceYearly.forEach(el => el.classList.add('hidden'));
+    periodMonthly.forEach(el => el.classList.remove('hidden'));
+    periodYearly.forEach(el => el.classList.add('hidden'));
+
+    ctaButtons.forEach(btn => {
+      const url = btn.getAttribute('data-url-monthly');
+      if (url) btn.setAttribute('href', url);
+    });
+  }
+
+  function setYearly() {
+    btnYearly?.classList.add('bg-secondary', 'text-black');
+    btnYearly?.classList.remove('text-gray-custom');
+    btnMonthly?.classList.remove('bg-secondary', 'text-black');
+    btnMonthly?.classList.add('text-gray-custom');
+
+    yearlyBadge?.classList.remove('text-secondary');
+    yearlyBadge?.classList.add('text-black');
+    priceYearly.forEach(el => el.classList.remove('hidden'));
+    priceMonthly.forEach(el => el.classList.add('hidden'));
+    periodYearly.forEach(el => el.classList.remove('hidden'));
+    periodMonthly.forEach(el => el.classList.add('hidden'));
+
+    ctaButtons.forEach(btn => {
+      const url = btn.getAttribute('data-url-yearly');
+      if (url) btn.setAttribute('href', url);
+    });
+  }
+
+  btnMonthly?.addEventListener('click', setMonthly);
+  btnYearly?.addEventListener('click', setYearly);
+</script>
