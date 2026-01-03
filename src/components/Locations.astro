@@ -1,0 +1,64 @@
+---
+import ScrollReveal from './magicui/ScrollReveal.tsx';
+
+const locations = [
+  {
+    city: "Mérida",
+    region: "Extremadura",
+    description: "Nuestra sede principal en Mérida ofrece soporte local para empresas de Extremadura.",
+    icon: "📍"
+  },
+  {
+    city: "Madrid",
+    region: "Comunidad de Madrid",
+    description: "Servicio ERP cloud para pymes y autónomos en Madrid y alrededores.",
+    icon: "📍"
+  },
+  {
+    city: "Toda España",
+    region: "Nacional",
+    description: "Software ERP accesible desde cualquier punto de España con soporte online 24/7.",
+    icon: "🇪🇸"
+  }
+];
+---
+
+<section id="locations" class="py-20 bg-base-200">
+  <div class="max-w-container mx-auto px-4">
+    <ScrollReveal client:load>
+      <div class="text-center mb-16">
+        <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4 text-base-content">
+          ERP en la nube en <span class="text-secondary">Mérida, Madrid y toda España</span>
+        </h2>
+        <p class="font-body text-lg text-base-content/70 max-w-2xl mx-auto">
+          Software de gestión empresarial con presencia local y alcance nacional
+        </p>
+      </div>
+    </ScrollReveal>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {locations.map((location, index) => (
+        <ScrollReveal delay={index * 0.1} client:load>
+          <div class="bg-base-100 border border-base-300 rounded-xl p-8 hover:border-secondary/50 hover:shadow-xl transition-all duration-300 group">
+            <div class="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{location.icon}</div>
+            <h3 class="font-heading text-2xl font-bold mb-2 text-base-content group-hover:text-secondary transition-colors">
+              {location.city}
+            </h3>
+            <p class="text-sm text-secondary/80 font-semibold mb-4 uppercase tracking-wider">{location.region}</p>
+            <p class="font-body text-base-content/70 text-base leading-relaxed">{location.description}</p>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
+
+    <!-- Emphasize local presence -->
+    <ScrollReveal delay={0.4} client:load>
+      <div class="mt-12 text-center">
+        <p class="font-body text-base-content/60 text-sm max-w-3xl mx-auto">
+          Con sede en <span class="text-secondary font-semibold">Camino viejo de mirandilla S/N, 06800 Mérida</span>,
+          ofrecemos soporte técnico especializado para pymes y autónomos en Extremadura, Madrid y toda España.
+        </p>
+      </div>
+    </ScrollReveal>
+  </div>
+</section>

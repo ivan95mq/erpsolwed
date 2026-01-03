@@ -1,0 +1,32 @@
+# robots.txt for erpsolwed.es
+User-agent: *
+Allow: /
+
+# Disallow private areas
+Disallow: /admin
+Disallow: /login
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://erpsolwed.es/sitemap-index.xml
+Sitemap: https://erpsolwed.es/sitemap-0.xml
+
+# Common bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Social media bots
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Crawl delay (prevents server overload)
+Crawl-delay: 1

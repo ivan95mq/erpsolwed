@@ -5,6 +5,8 @@ interface ShimmerButtonProps {
   href?: string;
   className?: string;
   size?: 'sm' | 'md' | 'lg';
+  target?: '_blank' | '_self' | '_parent' | '_top';
+  rel?: string;
 }
 
 export const ShimmerButton = ({
@@ -12,6 +14,8 @@ export const ShimmerButton = ({
   href,
   className = '',
   size = 'md',
+  target,
+  rel,
 }: ShimmerButtonProps) => {
   const sizeClasses = {
     sm: 'px-4 py-2 text-sm',
@@ -42,7 +46,12 @@ export const ShimmerButton = ({
 
   if (href) {
     return (
-      <a href={href} className="inline-block">
+      <a
+        href={href}
+        className="inline-block"
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : rel}
+      >
         {buttonContent}
       </a>
     );
