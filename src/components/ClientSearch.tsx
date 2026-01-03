@@ -70,7 +70,7 @@ export default function ClientSearch({ clients, isMobile = false }: ClientSearch
   }, []);
 
   // Partículas flotantes
-  const particles = Array.from({ length: isMobile ? 3 : 5 });
+  const particles = Array.from({ length: isMobile ? 2 : 3 });
 
   return (
     <div ref={containerRef} className="relative">

@@ -66,27 +66,25 @@ const plans = [
 ];
 ---
 
-<section id="pricing" class="py-24 relative overflow-hidden">
-  <!-- Background -->
-  <div class="absolute inset-0 bg-gradient-to-b from-base-100 via-base-200/30 to-base-100"></div>
+<section id="pricing" class="py-24 relative overflow-hidden bg-base-200">
 
   <div class="relative z-10 max-w-container mx-auto px-4">
     <!-- Section header -->
     <div class="text-center mb-16">
       <span class="font-body text-secondary uppercase tracking-widest text-sm">Precios</span>
-      <h2 class="font-heading text-3xl md:text-5xl font-bold mt-4 mb-6">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold mt-4 mb-6 text-base-content">
         Elige el plan <span class="text-secondary">perfecto para ti</span>
       </h2>
-      <p class="font-body text-gray-custom max-w-2xl mx-auto mb-8">
+      <p class="font-body text-base-content/70 max-w-2xl mx-auto mb-8">
         Todos los planes incluyen 1 mes gratis. Sin compromiso, cancela cuando quieras.
       </p>
 
       <!-- Billing toggle -->
-      <div class="inline-flex items-center gap-4 bg-base-300/50 rounded-pill p-1">
+      <div class="inline-flex items-center gap-4 bg-base-100 border border-base-300 rounded-pill p-1">
         <button id="btn-monthly" class="px-6 py-2 rounded-pill font-body text-sm transition-all bg-secondary text-black">
           Mensual
         </button>
-        <button id="btn-yearly" class="px-6 py-2 rounded-pill font-body text-sm transition-all text-gray-custom hover:text-white">
+        <button id="btn-yearly" class="px-6 py-2 rounded-pill font-body text-sm transition-all text-base-content/70 hover:text-base-content">
           Anual <span id="yearly-badge" class="text-secondary text-xs">(2 meses gratis)</span>
         </button>
       </div>
@@ -95,7 +93,7 @@ const plans = [
     <!-- Pricing cards -->
     <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
       {plans.map((plan) => (
-        <div class={`relative bg-base-200/50 backdrop-blur-sm border rounded-2xl p-8 flex flex-col ${plan.popular ? 'border-secondary' : 'border-base-300'}`}>
+        <div class={`relative bg-base-100 border rounded-2xl p-8 flex flex-col shadow-lg ${plan.popular ? 'border-secondary shadow-secondary/20' : 'border-base-300'}`}>
           {plan.popular && (
             <>
               <BorderBeam size={200} duration={8} client:load />
@@ -108,21 +106,21 @@ const plans = [
           )}
 
           <div class="mb-6">
-            <span class="inline-block bg-base-300/50 text-secondary text-xs font-body px-3 py-1 rounded-pill mb-4">
+            <span class="inline-block bg-secondary/10 text-secondary text-xs font-body px-3 py-1 rounded-pill mb-4">
               Recursos {plan.resources}
             </span>
-            <h3 class="font-heading text-2xl font-bold mb-2">{plan.name}</h3>
-            <p class="font-body text-gray-custom text-sm">{plan.description}</p>
+            <h3 class="font-heading text-2xl font-bold mb-2 text-base-content">{plan.name}</h3>
+            <p class="font-body text-base-content/70 text-sm">{plan.description}</p>
           </div>
 
           <div class="mb-8">
             <div class="flex items-baseline gap-1">
-              <span class="price-monthly font-heading text-4xl font-bold">{plan.priceMonthly}€</span>
-              <span class="price-yearly font-heading text-4xl font-bold hidden">{plan.priceYearly}€</span>
-              <span class="period-monthly font-body text-gray-custom">/mes</span>
-              <span class="period-yearly font-body text-gray-custom hidden">/año</span>
+              <span class="price-monthly font-heading text-4xl font-bold text-base-content">{plan.priceMonthly}€</span>
+              <span class="price-yearly font-heading text-4xl font-bold text-base-content hidden">{plan.priceYearly}€</span>
+              <span class="period-monthly font-body text-base-content/70">/mes</span>
+              <span class="period-yearly font-body text-base-content/70 hidden">/año</span>
             </div>
-            <p class="font-body text-xs text-gray-custom mt-1">+ IVA</p>
+            <p class="font-body text-xs text-base-content/60 mt-1">+ IVA</p>
           </div>
 
           <ul class="space-y-3 mb-8 flex-grow">
@@ -141,7 +139,7 @@ const plans = [
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
                 )}
-                <span class={`font-body text-sm ${feature.included === false ? 'text-gray-custom/50' : 'text-gray-custom'}`}>
+                <span class={`font-body text-sm ${feature.included === false ? 'text-base-content/50' : 'text-base-content/70'}`}>
                   {feature.name}
                   {typeof feature.included === 'string' && (
                     <span class="text-warning text-xs ml-1">({feature.included})</span>
@@ -155,7 +153,7 @@ const plans = [
             href={plan.urlMonthly}
             data-url-monthly={plan.urlMonthly}
             data-url-yearly={plan.urlYearly}
-            class={`btn w-full rounded-pill font-heading uppercase tracking-wider ${plan.popular ? 'btn-primary' : 'btn-outline border-white/20 hover:bg-white/10'}`}
+            class={`btn w-full rounded-pill font-heading uppercase tracking-wider ${plan.popular ? 'btn-primary' : 'btn-outline border-base-300 text-base-content/70 hover:bg-base-300'}`}
           >
             Empezar prueba gratis
           </a>
@@ -164,7 +162,7 @@ const plans = [
     </div>
 
     <!-- Footer note -->
-    <p class="text-center font-body text-sm text-gray-custom mt-12">
+    <p class="text-center font-body text-sm text-base-content/70 mt-12">
       Todos los planes incluyen: portal personalizado, backups diarios, soporte por email/tickets
     </p>
   </div>

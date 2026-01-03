@@ -7,9 +7,20 @@ import AnimatedGradient from './magicui/AnimatedGradient.tsx';
 import ScrollReveal from './magicui/ScrollReveal.tsx';
 ---
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[#0b0b0b] text-white">
   <!-- Background effects -->
-  <div class="absolute inset-0 bg-gradient-to-b from-base-100 via-base-200 to-base-100"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-[#0b0b0b] via-[#1a1a1a] to-[#0b0b0b]"></div>
+
+  <!-- GIF Background -->
+  <div class="absolute inset-0 overflow-hidden">
+    <img
+      src="/FS.gif"
+      alt="ERP SOLWED Background"
+      class="w-full h-full object-cover opacity-15"
+      loading="eager"
+    />
+  </div>
+
   <AnimatedGradient colors={["#F2E500", "#FFD700", "#FFA500"]} speed={15} client:load />
   <AnimatedBackground client:load />
 
@@ -21,95 +32,117 @@ import ScrollReveal from './magicui/ScrollReveal.tsx';
 
   <!-- Meteors -->
   <div class="absolute inset-0 overflow-hidden">
-    <Meteors number={20} client:load />
+    <Meteors number={8} client:load />
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 max-w-container mx-auto px-4 text-center">
-    <!-- Badge -->
-    <ScrollReveal client:load>
-      <div class="inline-flex items-center gap-2 bg-base-300/50 backdrop-blur-sm border border-secondary/20 rounded-pill px-4 py-2 mb-8 hover:bg-base-300/70 hover:border-secondary/40 transition-all duration-300 cursor-default group">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
-        </span>
-        <span class="font-body text-sm text-gray-custom group-hover:text-white transition-colors">Compatible con Verifactu 2026</span>
+  <div class="relative z-10 max-w-container mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Column: Text Content -->
+      <div class="text-center lg:text-left">
+        <!-- Badge -->
+        <ScrollReveal client:load>
+          <div class="inline-flex items-center gap-2 bg-base-300/50 backdrop-blur-sm border border-secondary/20 rounded-pill px-4 py-2 mb-8 hover:bg-base-300/70 hover:border-secondary/40 transition-all duration-300 cursor-default group">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+            </span>
+            <span class="font-body text-sm text-gray-custom group-hover:text-white transition-colors">Compatible con Verifactu 2026</span>
+          </div>
+        </ScrollReveal>
+
+        <!-- Headline -->
+        <ScrollReveal delay={0.1} client:load>
+          <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <span class="text-white inline-block hover:scale-105 transition-transform cursor-default">Factura sin</span>
+            <br />
+            <span class="gradient-text inline-block hover:scale-110 transition-transform cursor-default animate-gradient bg-gradient-to-r from-secondary via-yellow-400 to-secondary bg-[length:200%_auto]">
+              complicaciones
+            </span>
+          </h1>
+        </ScrollReveal>
+
+        <!-- Subheadline -->
+        <ScrollReveal delay={0.2} client:load>
+          <p class="font-body text-lg md:text-xl text-gray-custom max-w-2xl lg:max-w-none mb-10">
+            ERP en la nube para pymes y autónomos. Facturación electrónica, contabilidad,
+            inventario y más. Todo en un solo lugar.
+          </p>
+        </ScrollReveal>
+
+        <!-- CTA Buttons -->
+        <ScrollReveal delay={0.3} client:load>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-16">
+            <ShimmerButton href="#pricing" size="lg" client:load>
+              Prueba gratis 1 mes
+            </ShimmerButton>
+            <a href="#features" class="group btn btn-outline btn-lg rounded-pill font-heading uppercase tracking-wider border-white/20 hover:bg-white/10 hover:border-white/40 relative overflow-hidden">
+              <span class="relative z-10">Ver características</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-secondary/0 via-secondary/10 to-secondary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+            </a>
+          </div>
+        </ScrollReveal>
+
+        <!-- Stats -->
+        <ScrollReveal delay={0.4} client:load>
+          <div class="grid grid-cols-2 gap-8">
+            <div class="text-center lg:text-left group hover:scale-110 transition-transform duration-300 cursor-default">
+              <div class="relative">
+                <div class="absolute inset-0 bg-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative font-heading text-3xl md:text-4xl font-bold text-secondary">
+                  <NumberTicker value={50} suffix="+" client:load />
+                </div>
+              </div>
+              <p class="font-body text-sm text-gray-custom mt-1 group-hover:text-white transition-colors">Empresas activas</p>
+            </div>
+            <div class="text-center lg:text-left group hover:scale-110 transition-transform duration-300 cursor-default">
+              <div class="relative">
+                <div class="absolute inset-0 bg-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative font-heading text-3xl md:text-4xl font-bold text-secondary">
+                  <NumberTicker value={99} suffix="%" client:load />
+                </div>
+              </div>
+              <p class="font-body text-sm text-gray-custom mt-1 group-hover:text-white transition-colors">Uptime garantizado</p>
+            </div>
+            <div class="text-center lg:text-left group hover:scale-110 transition-transform duration-300 cursor-default">
+              <div class="relative">
+                <div class="absolute inset-0 bg-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative font-heading text-3xl md:text-4xl font-bold text-secondary">
+                  <NumberTicker value={24} suffix="/7" client:load />
+                </div>
+              </div>
+              <p class="font-body text-sm text-gray-custom mt-1 group-hover:text-white transition-colors">Soporte técnico</p>
+            </div>
+            <div class="text-center lg:text-left group hover:scale-110 transition-transform duration-300 cursor-default">
+              <div class="relative">
+                <div class="absolute inset-0 bg-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative font-heading text-3xl md:text-4xl font-bold text-secondary">
+                  <NumberTicker value={1} prefix="" suffix=" mes" client:load />
+                </div>
+              </div>
+              <p class="font-body text-sm text-gray-custom mt-1 group-hover:text-white transition-colors">Prueba gratis</p>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
-    </ScrollReveal>
 
-    <!-- Headline -->
-    <ScrollReveal delay={0.1} client:load>
-      <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-        <span class="text-white inline-block hover:scale-105 transition-transform cursor-default">Factura sin</span>
-        <br />
-        <span class="gradient-text inline-block hover:scale-110 transition-transform cursor-default animate-gradient bg-gradient-to-r from-secondary via-yellow-400 to-secondary bg-[length:200%_auto]">
-          complicaciones
-        </span>
-      </h1>
-    </ScrollReveal>
-
-    <!-- Subheadline -->
-    <ScrollReveal delay={0.2} client:load>
-      <p class="font-body text-lg md:text-xl text-gray-custom max-w-2xl mx-auto mb-10">
-        ERP en la nube para pymes y autónomos. Facturación electrónica, contabilidad,
-        inventario y más. Todo en un solo lugar.
-      </p>
-    </ScrollReveal>
-
-    <!-- CTA Buttons -->
-    <ScrollReveal delay={0.3} client:load>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-        <ShimmerButton href="#pricing" size="lg" client:load>
-          Prueba gratis 1 mes
-        </ShimmerButton>
-        <a href="#features" class="group btn btn-outline btn-lg rounded-pill font-heading uppercase tracking-wider border-white/20 hover:bg-white/10 hover:border-white/40 relative overflow-hidden">
-          <span class="relative z-10">Ver características</span>
-          <span class="absolute inset-0 bg-gradient-to-r from-secondary/0 via-secondary/10 to-secondary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-        </a>
+      <!-- Right Column: ERP Mockup -->
+      <div class="hidden lg:block">
+        <ScrollReveal delay={0.5} client:load>
+          <div class="relative group">
+            <!-- Glow effect -->
+            <div class="absolute -inset-4 bg-gradient-to-r from-secondary/20 via-yellow-400/20 to-secondary/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <!-- Image -->
+            <img
+              src="/images/mockup-erp.png"
+              alt="ERP SOLWED en diferentes dispositivos"
+              class="relative w-full h-auto drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-500"
+              loading="eager"
+            />
+          </div>
+        </ScrollReveal>
       </div>
-    </ScrollReveal>
-
-    <!-- Stats -->
-    <ScrollReveal delay={0.4} client:load>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
-        <div class="text-center group hover:scale-110 transition-transform duration-300 cursor-default">
-          <div class="relative">
-            <div class="absolute inset-0 bg-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="relative font-heading text-3xl md:text-4xl font-bold text-secondary">
-              <NumberTicker value={30} suffix="+" client:load />
-            </div>
-          </div>
-          <p class="font-body text-sm text-gray-custom mt-1 group-hover:text-white transition-colors">Empresas activas</p>
-        </div>
-        <div class="text-center group hover:scale-110 transition-transform duration-300 cursor-default">
-          <div class="relative">
-            <div class="absolute inset-0 bg-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="relative font-heading text-3xl md:text-4xl font-bold text-secondary">
-              <NumberTicker value={99} suffix="%" client:load />
-            </div>
-          </div>
-          <p class="font-body text-sm text-gray-custom mt-1 group-hover:text-white transition-colors">Uptime garantizado</p>
-        </div>
-        <div class="text-center group hover:scale-110 transition-transform duration-300 cursor-default">
-          <div class="relative">
-            <div class="absolute inset-0 bg-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="relative font-heading text-3xl md:text-4xl font-bold text-secondary">
-              <NumberTicker value={24} suffix="/7" client:load />
-            </div>
-          </div>
-          <p class="font-body text-sm text-gray-custom mt-1 group-hover:text-white transition-colors">Soporte técnico</p>
-        </div>
-        <div class="text-center group hover:scale-110 transition-transform duration-300 cursor-default">
-          <div class="relative">
-            <div class="absolute inset-0 bg-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="relative font-heading text-3xl md:text-4xl font-bold text-secondary">
-              <NumberTicker value={1} prefix="" suffix=" mes" client:load />
-            </div>
-          </div>
-          <p class="font-body text-sm text-gray-custom mt-1 group-hover:text-white transition-colors">Prueba gratis</p>
-        </div>
-      </div>
-    </ScrollReveal>
+    </div>
   </div>
 
   <!-- Scroll indicator -->

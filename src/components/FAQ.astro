@@ -31,43 +31,56 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="py-24 relative overflow-hidden">
-  <!-- Background -->
-  <div class="absolute inset-0 bg-gradient-to-b from-base-100 via-base-200/30 to-base-100"></div>
+<section id="faq" class="py-24 relative overflow-hidden bg-base-100">
 
   <div class="relative z-10 max-w-container mx-auto px-4">
     <!-- Section header -->
     <div class="text-center mb-16">
       <span class="font-body text-secondary uppercase tracking-widest text-sm">FAQ</span>
-      <h2 class="font-heading text-3xl md:text-5xl font-bold mt-4 mb-6">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold mt-4 mb-6 text-base-content">
         Preguntas <span class="text-secondary">frecuentes</span>
       </h2>
-      <p class="font-body text-gray-custom max-w-2xl mx-auto">
+      <p class="font-body text-base-content/70 max-w-2xl mx-auto">
         ¿Tienes dudas? Aquí respondemos las preguntas más comunes sobre nuestro ERP.
       </p>
     </div>
 
-    <!-- FAQ accordion -->
-    <div class="max-w-3xl mx-auto space-y-4">
-      {faqs.map((faq, index) => (
-        <div class="collapse collapse-arrow bg-base-200/50 backdrop-blur-sm border border-base-300 rounded-xl">
-          <input type="radio" name="faq-accordion" checked={index === 0} />
-          <div class="collapse-title font-heading text-lg font-semibold pr-12">
-            {faq.question}
+    <!-- FAQ Content Grid -->
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <!-- Left Column: FAQ accordion -->
+      <div class="space-y-4 order-2 lg:order-1">
+        {faqs.map((faq, index) => (
+          <div class="collapse collapse-arrow bg-base-100 border border-base-300 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+            <input type="radio" name="faq-accordion" checked={index === 0} />
+            <div class="collapse-title font-heading text-lg font-semibold pr-12 text-base-content">
+              {faq.question}
+            </div>
+            <div class="collapse-content">
+              <p class="font-body text-base-content/70 pt-2">
+                {faq.answer}
+              </p>
+            </div>
           </div>
-          <div class="collapse-content">
-            <p class="font-body text-gray-custom pt-2">
-              {faq.answer}
-            </p>
-          </div>
+        ))}
+      </div>
+
+      <!-- Right Column: Illustration -->
+      <div class="order-1 lg:order-2 lg:sticky lg:top-24">
+        <div class="relative group max-w-lg mx-auto">
+          <img
+            src="/images/faq-illustration.png"
+            alt="Soporte y preguntas frecuentes"
+            class="w-full h-auto drop-shadow-xl transform group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
         </div>
-      ))}
+      </div>
     </div>
 
     <!-- Contact CTA -->
     <div class="text-center mt-12">
-      <p class="font-body text-gray-custom mb-4">¿No encuentras lo que buscas?</p>
-      <a href="mailto:info@solwed.es" class="btn btn-outline rounded-pill font-heading uppercase tracking-wider border-white/20 hover:bg-white/10 hover:border-white/40">
+      <p class="font-body text-base-content/70 mb-4">¿No encuentras lo que buscas?</p>
+      <a href="mailto:hola@solwed.es" class="btn btn-outline rounded-pill font-heading uppercase tracking-wider border-base-300 text-base-content/70 hover:bg-base-300">
         Contactar con soporte
       </a>
     </div>

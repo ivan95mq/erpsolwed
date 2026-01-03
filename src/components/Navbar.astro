@@ -1,42 +1,37 @@
 ---
-// Lista de clientes ERP existentes
-const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza","manuela","mueblesg3","ospe","roesan","wehost"];
+// Lista de clientes ERP existentes (fallback estático)
+// Esta lista se actualiza automáticamente desde /clients.json (generado por cron)
+const erpClients = [{"id":"activa","logo":"https://activa.erpsolwed.es/MyFiles/2024/12/1.png?myft=da8cebe5668bc14aec1c9a6076693371662584ec"},{"id":"adelaalvarez","logo":"https://adelaalvarez.erpsolwed.es/MyFiles/2025/01/3.png?myft=5fd8335a294371c096c7ebb091c0f2ca5294feba"},{"id":"aluminiosromero","logo":"https://aluminiosromero.erpsolwed.es/MyFiles/2025/01/2.png?myft=c54e2b5481fe27b6f1f9d1686524fe0c33ccef58"},{"id":"anabelen","logo":"https://anabelen.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"anrok","logo":"https://anrok.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"area5","logo":"https://area5.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"autocaravanasmyriam","logo":"https://autocaravanasmyriam.erpsolwed.es/MyFiles/2025/11/1.png?myft=3f1861ecdb9292dae5afd742e7b542d123810e67"},{"id":"avdrone","logo":"https://avdrone.erpsolwed.es/MyFiles/2025/12/1.jpg?myft=29aafb9c884ab82d31029cc8085883669dd566dc"},{"id":"banum","logo":"https://banum.erpsolwed.es/MyFiles/2025/07/1.jpg?myft=bbf539d9466efcec4ab244366dc2ac0557dbf632"},{"id":"benignomoreno","logo":"https://benignomoreno.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"bulldog","logo":"https://bulldog.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"cabmodas","logo":"https://cabmodas.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"campoestudio","logo":"https://campoestudio.erpsolwed.es/MyFiles/2025/07/3.png?myft=a0381362289609c19ae225a5161f78048a79d364"},{"id":"carmengastrobar","logo":"https://carmengastrobar.erpsolwed.es/MyFiles/2025/07/3.png?myft=709116185397288d34ed96bfd81696be94b4c384"},{"id":"carrillocerrajeria","logo":"https://carrillocerrajeria.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"catar","logo":"https://catar.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"centroatlas","logo":"https://centroatlas.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"chc","logo":"https://chc.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"cmg","logo":"https://cmg.erpsolwed.es/MyFiles/2025/07/1.png?myft=49b5df9ef2ea56dd263e69cde9ec1c0411a0b33f"},{"id":"construmaex","logo":"https://construmaex.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"demo","logo":"https://demo.erpsolwed.es/MyFiles/2024/10/21.png?myft=4f56658568c8bf79a937d63ce3557cba4fde3078"},{"id":"dsl","logo":"https://dsl.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"efinca","logo":"https://efinca.erpsolwed.es/MyFiles/2025/06/1.png?myft=2bcd3875279622514642348271e579d0d0fcae49"},{"id":"espaziomerida","logo":"https://espaziomerida.erpsolwed.es/MyFiles/2025/06/1.png?myft=af53016898796f8cb53d3f59d969b80cfdea20e6"},{"id":"esterpulido","logo":"https://esterpulido.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"excavacionesmoreno","logo":"https://excavacionesmoreno.erpsolwed.es/MyFiles/2025/04/78.jpg?myft=7dbc048326141e8dca7df4f8a0b3935c6eabb080"},{"id":"extrenatura","logo":null},{"id":"gastrodehesa","logo":"https://gastrodehesa.erpsolwed.es/MyFiles/2025/03/3.png?myft=c8c96548a220eeee6d3ce174c3b1683b996500f4"},{"id":"gekko","logo":"https://gekko.erpsolwed.es/MyFiles/2025/02/50.png?myft=4f20d7f8b827b8f3548f28a350f2d6d849f1bd51"},{"id":"grupoforti","logo":"https://grupoforti.erpsolwed.es/MyFiles/2025/06/1.jpg?myft=a6cbb2ca06047cfb39e8cac54b33bdd8b2eda6ea"},{"id":"horymca","logo":"https://horymca.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"jaimejaramillo","logo":"https://jaimejaramillo.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"javiertamudo","logo":"https://javiertamudo.erpsolwed.es/MyFiles/2025/09/1.png?myft=5cfecc7688b785a1e208c0c524ce9422b8ce71fe"},{"id":"jesusmartinezvergel","logo":"https://jesusmartinezvergel.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"labaronesa","logo":"https://labaronesa.erpsolwed.es/MyFiles/2025/07/1.jpg?myft=6be08cd447d865f532b02b9d4563ef073f2145c0"},{"id":"limpiezasextremadura","logo":"https://limpiezasextremadura.erpsolwed.es/MyFiles/2025/12/3.jpg?myft=1bb297198904c7fb3636e17024d4ec46ed16c474"},{"id":"maderasleon","logo":"https://maderasleon.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"magaza","logo":"https://magaza.erpsolwed.es/MyFiles/2025/11/1.png?myft=585a76cfb250423d955242f492b3d42a5267fa73"},{"id":"malpe","logo":"https://malpe.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"manuela","logo":"https://manuela.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"marcosfranganillo","logo":"https://marcosfranganillo.erpsolwed.es/MyFiles/2025/11/1.jpg?myft=f73c3601f9f65bb94c86b65e9fb90928278e8f89"},{"id":"martajimenez","logo":"https://martajimenez.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"mohana","logo":"https://mohana.erpsolwed.es/MyFiles/2025/07/1.png?myft=e0786c3beb036191018c1710fbec7e12288d198c"},{"id":"mueblesg3","logo":"https://mueblesg3.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"onivenis","logo":"https://onivenis.erpsolwed.es/MyFiles/2025/07/1.png?myft=75921a750f6484b0ef71c8ccde277b02415a9fd9"},{"id":"ospe","logo":"https://ospe.erpsolwed.es/MyFiles/2025/12/1.jpg?myft=7de760d4e55f7bdaade1595a51ffcbf1a10c69f0"},{"id":"pilarcortes","logo":null},{"id":"rdgarantia","logo":"https://rdgarantia.erpsolwed.es/MyFiles/2025/07/1.png?myft=0fe91c5c331a2a59e17b54df87a3e614add4ae69"},{"id":"regaloslagominola","logo":"https://regaloslagominola.erpsolwed.es/MyFiles/2025/07/1.png?myft=3202122038f2eefbdefca6fca9bba85bf0660853"},{"id":"roesan","logo":"https://roesan.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"royano","logo":null},{"id":"serviciosnai","logo":null},{"id":"servigest","logo":"https://servigest.erpsolwed.es/MyFiles/2024/01/2.png?myft=88431a05bf9c299c018729ce86daed17becedb79"},{"id":"urbanflexliving","logo":"https://urbanflexliving.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"},{"id":"wehost","logo":"https://wehost.erpsolwed.es/Dinamic/Assets/Images/horizontal-logo.png"}];
 ---
 
-<nav class="navbar bg-base-100/80 backdrop-blur-md fixed top-0 z-50 border-b border-base-300">
+<nav class="navbar bg-base-100/95 backdrop-blur-md fixed top-0 z-50 border-b border-base-300 shadow-sm">
   <div class="max-w-container mx-auto w-full px-4">
-    <div class="flex-1">
-      <a href="/" class="flex items-center gap-2">
-        <span class="font-heading text-2xl font-bold text-secondary">ERP</span>
-        <span class="font-heading text-2xl font-bold text-white">SOLWED</span>
+    <!-- Logo (Izquierda) -->
+    <div class="flex-none">
+      <a href="/" class="flex items-center">
+        <img src="/logos/logo-claro.png" alt="ERP SOLWED" class="h-10 w-auto" />
       </a>
     </div>
-    <div class="flex-none hidden md:block">
-      <ul class="menu menu-horizontal px-1 gap-2">
-        <li><a href="#features" class="font-body hover:text-secondary transition-colors">Características</a></li>
-        <li><a href="#pricing" class="font-body hover:text-secondary transition-colors">Precios</a></li>
-        <li><a href="#faq" class="font-body hover:text-secondary transition-colors">FAQ</a></li>
-      </ul>
-    </div>
-    <!-- Buscador de clientes - DESTACADO -->
-    <div class="flex-none hidden md:block ml-6">
-      <div id="client-search-container" class="relative">
-        <div class="flex items-center gap-2 bg-gradient-to-r from-secondary/20 to-primary/20 border-2 border-secondary/50 rounded-pill px-4 py-2 hover:border-secondary transition-all duration-300 group">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+    <!-- Buscador de clientes - CENTRADO Y PROMINENTE -->
+    <div class="flex-1 hidden md:flex justify-center px-8">
+      <div id="client-search-container" class="relative w-full max-w-2xl">
+        <div class="flex items-center gap-3 bg-gradient-to-r from-secondary/20 to-primary/20 border-2 border-secondary/50 rounded-pill px-6 py-3 hover:border-secondary hover:shadow-[0_0_30px_rgba(242,229,0,0.4)] transition-all duration-300 group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
             type="text"
             id="client-search"
-            placeholder="¿Ya eres cliente? Accede aquí"
+            placeholder="¿Ya eres cliente? Busca tu empresa aquí..."
             autocomplete="off"
-            class="bg-transparent border-none outline-none w-52 font-body text-sm text-white placeholder:text-gray-custom/70 focus:placeholder:text-gray-custom/40"
+            class="bg-transparent border-none outline-none flex-1 text-base text-white placeholder:text-white/90 focus:placeholder:text-white/70"
           />
-          <kbd class="hidden group-hover:inline-flex kbd kbd-sm bg-base-300/50 text-xs text-gray-custom">Enter</kbd>
+          <kbd class="hidden group-hover:inline-flex kbd kbd-sm bg-base-300 text-xs text-white/60">Enter</kbd>
         </div>
         <!-- Dropdown de autocompletado -->
         <div id="client-dropdown" class="absolute top-full left-0 right-0 mt-2 bg-base-200 border border-base-300 rounded-xl shadow-2xl overflow-hidden z-50 hidden">
-          <div class="p-2 text-xs text-gray-custom/70 font-body border-b border-base-300">
+          <div class="p-2 text-xs text-white/60 font-body border-b border-base-300">
             Clientes activos
           </div>
           <ul id="client-list" class="max-h-64 overflow-y-auto">
@@ -44,15 +39,19 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
               <li>
                 <button
                   type="button"
-                  class="client-option w-full px-4 py-3 text-left font-body hover:bg-secondary/20 transition-colors flex items-center gap-3"
-                  data-id={client}
+                  class="client-option w-full px-4 py-3 text-left font-body hover:bg-secondary/10 transition-colors flex items-center gap-3"
+                  data-id={client.id}
                 >
-                  <span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-heading text-sm">
-                    {client.charAt(0).toUpperCase()}
-                  </span>
+                  {client.logo ? (
+                    <img src={client.logo} alt={client.id} class="w-8 h-8 rounded-full object-cover border border-secondary/20" />
+                  ) : (
+                    <span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-heading text-sm">
+                      {client.id.charAt(0).toUpperCase()}
+                    </span>
+                  )}
                   <div>
-                    <div class="text-white">{client}</div>
-                    <div class="text-xs text-gray-custom/60">{client}.erpsolwed.es</div>
+                    <div class="text-white">{client.id}</div>
+                    <div class="text-xs text-white/60">{client.id}.erpsolwed.es</div>
                   </div>
                 </button>
               </li>
@@ -60,7 +59,7 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
           </ul>
           <!-- No encontrado -->
           <div id="not-found-msg" class="hidden p-4 border-t border-base-300 text-center">
-            <p class="text-gray-custom/70 text-sm mb-3">
+            <p class="text-white/70 text-sm mb-3">
               "<span id="search-term"></span>" no está en nuestra lista
             </p>
             <div class="flex gap-2">
@@ -75,11 +74,19 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
         </div>
       </div>
     </div>
-    <div class="flex-none ml-4">
+
+    <!-- Links + Botón (Derecha) -->
+    <div class="flex-none hidden md:flex items-center gap-4">
+      <ul class="menu menu-horizontal px-1 gap-2">
+        <li><a href="#features" class="font-body text-base-content/70 hover:text-secondary transition-colors">Características</a></li>
+        <li><a href="#pricing" class="font-body text-base-content/70 hover:text-secondary transition-colors">Precios</a></li>
+        <li><a href="#faq" class="font-body text-base-content/70 hover:text-secondary transition-colors">FAQ</a></li>
+      </ul>
       <a href="#pricing" class="btn btn-primary btn-sm rounded-pill font-heading uppercase tracking-wider">
         Prueba gratis
       </a>
     </div>
+
     <!-- Mobile menu -->
     <div class="flex-none md:hidden">
       <label for="mobile-menu" class="btn btn-ghost btn-circle">
@@ -98,7 +105,7 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
   <div class="absolute right-0 top-0 h-full w-72 bg-base-200 p-6">
     <!-- Buscador móvil mejorado -->
     <div class="mb-6">
-      <div class="text-xs text-gray-custom/70 font-body mb-2">¿Ya eres cliente?</div>
+      <div class="text-xs text-white/70 font-body mb-2">¿Ya eres cliente?</div>
       <div id="client-search-container-mobile" class="relative">
         <div class="flex items-center gap-2 bg-gradient-to-r from-secondary/20 to-primary/20 border-2 border-secondary/50 rounded-xl px-4 py-3">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -109,7 +116,7 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
             id="client-search-mobile"
             placeholder="Buscar mi empresa..."
             autocomplete="off"
-            class="bg-transparent border-none outline-none w-full font-body text-sm text-white placeholder:text-gray-custom/70"
+            class="bg-transparent border-none outline-none w-full font-body text-sm text-white placeholder:text-white/70"
           />
         </div>
         <!-- Dropdown móvil -->
@@ -120,15 +127,19 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
                 <button
                   type="button"
                   class="client-option-mobile w-full px-4 py-3 text-left font-body hover:bg-secondary/20 transition-colors flex items-center gap-3"
-                  data-id={client}
-                  
+                  data-id={client.id}
+
                 >
-                  <span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-heading text-sm">
-                    {client.charAt(0).toUpperCase()}
-                  </span>
+                  {client.logo ? (
+                    <img src={client.logo} alt={client.id} class="w-8 h-8 rounded-full object-cover border border-secondary/20" />
+                  ) : (
+                    <span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-heading text-sm">
+                      {client.id.charAt(0).toUpperCase()}
+                    </span>
+                  )}
                   <div>
-                    <div class="text-white text-sm">{client}</div>
-                    <div class="text-xs text-gray-custom/60">{client}.erpsolwed.es</div>
+                    <div class="text-white text-sm">{client.id}</div>
+                    <div class="text-xs text-white/60">{client.id}.erpsolwed.es</div>
                   </div>
                 </button>
               </li>
@@ -136,7 +147,7 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
           </ul>
           <!-- No encontrado móvil -->
           <div id="not-found-msg-mobile" class="hidden p-4 border-t border-base-300 text-center">
-            <p class="text-gray-custom/70 text-sm mb-3">
+            <p class="text-white/70 text-sm mb-3">
               "<span id="search-term-mobile"></span>" no está en nuestra lista
             </p>
             <div class="flex flex-col gap-2">
@@ -165,6 +176,95 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
 </div>
 
 <script define:vars={{ erpClients }}>
+  // Lista de clientes (se cargará desde JSON o usará fallback)
+  let clientsList = erpClients;
+
+  // Cargar lista actualizada desde JSON
+  async function loadClients() {
+    try {
+      const response = await fetch('/clients.json');
+      if (response.ok) {
+        const clients = await response.json();
+        if (Array.isArray(clients) && clients.length > 0) {
+          clientsList = clients;
+          console.log(`✅ Cargados ${clients.length} clientes desde JSON`);
+          updateClientOptions();
+        }
+      }
+    } catch (error) {
+      console.warn('⚠️ Usando lista de clientes estática (fallback)');
+    }
+  }
+
+  // Actualizar opciones de clientes en el DOM
+  function updateClientOptions() {
+    // Desktop
+    const clientList = document.getElementById('client-list');
+    if (clientList) {
+      clientList.innerHTML = clientsList.map(client => {
+        const logoHtml = client.logo
+          ? `<img src="${client.logo}" alt="${client.id}" class="w-8 h-8 rounded-full object-cover border border-secondary/20" />`
+          : `<span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-heading text-sm">${client.id.charAt(0).toUpperCase()}</span>`;
+
+        return `
+          <li>
+            <button
+              type="button"
+              class="client-option w-full px-4 py-3 text-left font-body hover:bg-secondary/10 transition-colors flex items-center gap-3"
+              data-id="${client.id}"
+            >
+              ${logoHtml}
+              <div>
+                <div class="text-white">${client.id}</div>
+                <div class="text-xs text-white/60">${client.id}.erpsolwed.es</div>
+              </div>
+            </button>
+          </li>
+        `;
+      }).join('');
+
+      // Re-attach event listeners
+      document.querySelectorAll('.client-option').forEach(option => {
+        option.addEventListener('click', () => {
+          goToERP(option.dataset.id || '');
+        });
+      });
+    }
+
+    // Mobile
+    const clientListMobile = document.getElementById('client-list-mobile');
+    if (clientListMobile) {
+      clientListMobile.innerHTML = clientsList.map(client => {
+        const logoHtml = client.logo
+          ? `<img src="${client.logo}" alt="${client.id}" class="w-8 h-8 rounded-full object-cover border border-secondary/20" />`
+          : `<span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-heading text-sm">${client.id.charAt(0).toUpperCase()}</span>`;
+
+        return `
+          <li>
+            <button
+              type="button"
+              class="client-option-mobile w-full px-4 py-3 text-left font-body hover:bg-secondary/20 transition-colors flex items-center gap-3"
+              data-id="${client.id}"
+            >
+              ${logoHtml}
+              <div>
+                <div class="text-white text-sm">${client.id}</div>
+                <div class="text-xs text-white/60">${client.id}.erpsolwed.es</div>
+              </div>
+            </button>
+          </li>
+        `;
+      }).join('');
+
+      // Re-attach event listeners
+      document.querySelectorAll('.client-option-mobile').forEach(option => {
+        option.addEventListener('click', () => {
+          goToERP(option.dataset.id || '');
+        });
+      });
+    }
+  }
+
   // Función para ir al ERP
   function goToERP(clientId) {
     if (clientId.trim()) {
@@ -181,10 +281,12 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
       .replace(/[^a-z0-9]/g, '');
   }
 
+  // Cargar clientes al iniciar
+  loadClients();
+
   // Desktop
   const input = document.getElementById('client-search');
   const dropdown = document.getElementById('client-dropdown');
-  const clientOptions = document.querySelectorAll('.client-option');
 
   input?.addEventListener('focus', () => {
     dropdown?.classList.remove('hidden');
@@ -199,10 +301,12 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
     const rawQuery = e.target.value.trim();
     let hasResults = false;
 
+    // Buscar en la lista de clientes actual (puede ser del JSON o fallback)
+    const clientOptions = document.querySelectorAll('.client-option');
     clientOptions.forEach((option) => {
       const id = option.dataset.id || '';
 
-      if (id.includes(query)) {
+      if (normalizeText(id).includes(query)) {
         option.parentElement.classList.remove('hidden');
         hasResults = true;
       } else {
@@ -237,12 +341,6 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
     }
   });
 
-  clientOptions.forEach((option) => {
-    option.addEventListener('click', () => {
-      goToERP(option.dataset.id || '');
-    });
-  });
-
   // Cerrar dropdown al hacer clic fuera
   document.addEventListener('click', (e) => {
     const container = document.getElementById('client-search-container');
@@ -254,7 +352,6 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
   // Mobile
   const inputMobile = document.getElementById('client-search-mobile');
   const dropdownMobile = document.getElementById('client-dropdown-mobile');
-  const clientOptionsMobile = document.querySelectorAll('.client-option-mobile');
   const notFoundMsgMobile = document.getElementById('not-found-msg-mobile');
   const searchTermMobile = document.getElementById('search-term-mobile');
   const tryAnywayMobile = document.getElementById('try-anyway-mobile');
@@ -268,10 +365,12 @@ const erpClients = ["anrok","cabmodas","catar","construmaex","horymca","magaza",
     const rawQuery = e.target.value.trim();
     let hasResultsMobile = false;
 
+    // Buscar en la lista de clientes actual (puede ser del JSON o fallback)
+    const clientOptionsMobile = document.querySelectorAll('.client-option-mobile');
     clientOptionsMobile.forEach((option) => {
       const id = option.dataset.id || '';
 
-      if (id.includes(query)) {
+      if (normalizeText(id).includes(query)) {
         option.parentElement.classList.remove('hidden');
         hasResultsMobile = true;
       } else {

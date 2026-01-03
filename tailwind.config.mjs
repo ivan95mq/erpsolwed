@@ -49,7 +49,7 @@ export default {
   daisyui: {
     themes: [
       {
-        solwed: {
+        dark: {
           'primary': '#F2E500',
           'secondary': '#2E3536',
           'accent': '#F2E500',
@@ -57,6 +57,7 @@ export default {
           'base-100': '#0b0b0b',
           'base-200': '#1a1a1a',
           'base-300': '#2a2a2a',
+          'base-content': '#e0e0e0',
           'info': '#3abff8',
           'success': '#36d399',
           'warning': '#fbbd23',
