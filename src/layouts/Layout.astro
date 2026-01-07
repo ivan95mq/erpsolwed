@@ -1,4 +1,6 @@
 ---
+import CookieConsentBanner from '../components/CookieConsentBanner';
+
 interface Props {
   title: string;
   description?: string;
@@ -47,13 +49,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="theme-color" content="#2E3536" />
     <meta name="msapplication-TileColor" content="#F2E500" />
 
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Preload Orbitron font for faster loading -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" as="style" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" />
+    <!-- Orbitron Font - Self-hosted (Privacy-friendly) -->
+    <link rel="preload" href="/fonts/orbitron-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/fonts/orbitron.css" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -320,6 +318,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body class="min-h-screen bg-base-100">
     <slot />
+    <CookieConsentBanner client:load />
   </body>
 </html>
 
