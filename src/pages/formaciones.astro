@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import FormacionesForm from '../components/FormacionesForm';
+import Meteors from '../components/magicui/Meteors';
+---
+
+<Layout
+  title="Formaciones ERP | Aprende a usar tu software de gestión | SOLWED"
+  description="Inscríbete en nuestras formaciones mensuales gratuitas y aprende a sacar el máximo provecho de tu ERP. Sesiones online personalizadas para optimizar tu negocio."
+>
+  <Navbar />
+
+  <main class="min-h-screen bg-primary relative overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 -z-10">
+      <Meteors number={20} />
+      <div class="absolute inset-0 bg-gradient-to-b from-primary via-primary/80 to-[#1a1d1e]"></div>
+    </div>
+
+    <!-- Header Section -->
+    <section class="pt-32 pb-16 px-4">
+      <div class="container mx-auto max-w-4xl text-center">
+        <h1 class="font-heading text-5xl md:text-6xl font-bold text-white mb-6">
+          Formaciones <span class="text-secondary">Mensuales</span>
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-4 max-w-2xl mx-auto">
+          Aprende a sacar el máximo provecho de tu ERP con nuestras sesiones de formación online
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-6 text-gray-400 text-sm mb-8">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"/>
+            </svg>
+            <span>Duración: 1 hora</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/>
+            </svg>
+            <span>Sesiones personalizadas</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+            </svg>
+            <span>Tercer miércoles de cada mes por la tarde</span>
+          </div>
+        </div>
+
+        <!-- Botón de unirse al grupo de WhatsApp -->
+        <div class="flex justify-center">
+          <a
+            href="https://chat.whatsapp.com/E66GjGoxvJGHemSrH4Rr0y"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <span>Únete a nuestro grupo de WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="pb-20 px-4">
+      <FormacionesForm client:load />
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 px-4 bg-[#1a1d1e]/50">
+      <div class="container mx-auto max-w-6xl">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white text-center mb-12">
+          ¿Qué aprenderás?
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Benefit 1 -->
+          <div class="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-primary/20 hover:border-secondary/50 transition-colors">
+            <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Gestión de documentos</h3>
+            <p class="text-gray-400">Facturas, presupuestos, albaranes y más documentos comerciales</p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-primary/20 hover:border-secondary/50 transition-colors">
+            <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Control de tesorería</h3>
+            <p class="text-gray-400">Gestiona tus cuentas bancarias y flujo de caja eficientemente</p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-primary/20 hover:border-secondary/50 transition-colors">
+            <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Gestión de clientes</h3>
+            <p class="text-gray-400">CRM integrado para mejorar tu relación con clientes</p>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-primary/20 hover:border-secondary/50 transition-colors">
+            <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Control de almacén</h3>
+            <p class="text-gray-400">Inventario, stocks, productos y gestión de proveedores</p>
+          </div>
+
+          <!-- Benefit 5 -->
+          <div class="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-primary/20 hover:border-secondary/50 transition-colors">
+            <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Informes y análisis</h3>
+            <p class="text-gray-400">Dashboards y reportes para tomar mejores decisiones</p>
+          </div>
+
+          <!-- Benefit 6 -->
+          <div class="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-primary/20 hover:border-secondary/50 transition-colors">
+            <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Trucos y consejos</h3>
+            <p class="text-gray-400">Tips para optimizar tu trabajo diario con el ERP</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 px-4">
+      <div class="container mx-auto max-w-3xl">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white text-center mb-12">
+          Preguntas frecuentes
+        </h2>
+
+        <div class="space-y-4">
+          <div class="collapse collapse-arrow bg-black/30 backdrop-blur-sm border border-primary/20">
+            <input type="radio" name="faq-accordion" checked />
+            <div class="collapse-title text-xl font-medium text-white">
+              ¿Cuándo son las formaciones?
+            </div>
+            <div class="collapse-content text-gray-400">
+              <p>Las formaciones se realizan la primera semana de cada mes. Al inscribirte, recibirás la fecha exacta y el enlace de acceso por email.</p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow bg-black/30 backdrop-blur-sm border border-primary/20">
+            <input type="radio" name="faq-accordion" />
+            <div class="collapse-title text-xl font-medium text-white">
+              ¿Tienen algún coste?
+            </div>
+            <div class="collapse-content text-gray-400">
+              <p>No, las formaciones son completamente gratuitas para todos nuestros clientes de ERP SOLWED.</p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow bg-black/30 backdrop-blur-sm border border-primary/20">
+            <input type="radio" name="faq-accordion" />
+            <div class="collapse-title text-xl font-medium text-white">
+              ¿Qué necesito para participar?
+            </div>
+            <div class="collapse-content text-gray-400">
+              <p>Solo necesitas un ordenador con conexión a internet. Las sesiones se realizan por Zoom, y te enviaremos el enlace de acceso tras tu inscripción.</p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow bg-black/30 backdrop-blur-sm border border-primary/20">
+            <input type="radio" name="faq-accordion" />
+            <div class="collapse-title text-xl font-medium text-white">
+              ¿Se graban las sesiones?
+            </div>
+            <div class="collapse-content text-gray-400">
+              <p>Sí, todas las sesiones se graban y se envían posteriormente a los participantes para que puedan revisarlas cuando lo necesiten.</p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow bg-black/30 backdrop-blur-sm border border-primary/20">
+            <input type="radio" name="faq-accordion" />
+            <div class="collapse-title text-xl font-medium text-white">
+              ¿Puedo hacer preguntas durante la formación?
+            </div>
+            <div class="collapse-content text-gray-400">
+              <p>¡Por supuesto! Las formaciones son interactivas. Puedes hacer preguntas en directo y compartir tus dudas con el formador.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
