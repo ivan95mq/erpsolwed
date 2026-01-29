@@ -26,3 +26,12 @@ yarn-error.log*
 # Backup files
 *.bak
 *.old
+
+# Image optimization artifacts
+*-unsmushed.png
+*-unsmushed.jpg
+*-unsmushed.jpeg
+*.png.bak
+*.jpg.orig
+*-original.png
+*-original.jpg
